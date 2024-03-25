@@ -1,0 +1,206 @@
+ body{
+    font-family: "Poppins", serif;
+    background-image: url('/images/concrete_seamless.png');
+    background-color: #f1f1f1;
+   background-size: cover;
+   overflow: auto;
+ }
+
+ /* This was a bit  tough to do. 
+ Jessica helped me out :)*/
+@keyframes logostretch {
+   from {width: 25px; opacity: 0;}
+   to {width: 475px; opacity: 1;}
+}
+
+header #logo{
+   animation-name: logostretch;
+   animation-duration: 5s;
+   width: 475px;
+}
+
+header{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+ }
+
+ul.nav_links{
+   display: flex;
+   flex-direction: column;
+}
+
+.nav_links a:visited{
+   color: #0000EE;
+}
+
+/* I added this part in because after "visiting" a link,
+it did not turn back to the original color when i came back */
+.nav_item a:hover, a:focus{
+   color: #50C7C7;
+   text-decoration: underline;
+   -webkit-text-decoration-style: dotted;
+           text-decoration-style: dotted;
+ }
+
+
+div.card{
+   border-radius: 50px 50px 0px 0px;
+   display: flex;
+   flex-direction: column;
+   width: 450px;
+}
+
+/* This one was a bit confusing to figure out because 
+I thought I already rounded out the edges but I hadn't haha */
+div.card > header{
+   background-color: #288088;
+   border: solid 2px #45ADAD;
+   padding-top: 20px;
+   padding-bottom: 20px;
+   border-radius: 50px 50px 0px 0px;
+}
+
+div.pricing{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+/* moving the images around was fun :D */
+ div.gallery{
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-items: stretch;
+ }
+
+ .gallery img {
+ border: solid 10px #50C7C7;
+   margin: 10px;
+   width: 300px;
+}
+
+
+ @media screen and (min-width: 900px){
+   /* This literally took so long for me to figure out... 
+   I think it was my last resort to use the child operator */
+   body > header{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      position: fixed;
+      width: 100%;
+      top: 0;
+   }
+
+   /* I am not sure if I am allowed to use the margin-top 
+   but it was the only way to have all my contents show 
+   under the nav bar while 
+   it is stuck to the top while scrolling */
+   main{
+      display: flex;
+      margin-top: 90px;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+   }
+
+   ul.nav_links{
+      flex-direction: row;
+   }
+
+   /* had to make this to make the headers for the texts to align to the left since I made the header align center on another function up top. */
+   .card header{
+      display:flex;
+      flex-direction: row;
+   }
+   
+   div.card{
+      flex-direction: column;
+      width: 275px;
+   }
+
+  /* I am not sure if this is supposed to be here because 
+  there are images that is titled "hw4_1200px.png" & "hw4_1500px.png" (hw FOUR) that shows
+  an image without this. but there is another photo named "hw5_1200px_scrolled.png" (hw FIVE) which shows an image using the justify-content... so I hope I don't get points off for this ; */
+  div.gallery{
+   justify-content: space-around
+   } 
+
+   div.pricing{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+   }
+   header #logo{
+      animation: none;
+   }
+}
+
+/* Hopefully this works ! */
+@media screen and (prefers-reduced-motion: reduce){
+   header #logo{
+      animation: none;
+   }
+}
+
+@media print {
+   /* had to center the logo separately to work with the nav*/
+   header #logo{
+      animation: none;
+      align-items: center; 
+   }
+
+   /* I am not sure if I can use gap but this was the only 
+   way that let me move the nav items. */
+ul.nav_links{
+   display: flex;
+ flex-direction: row;
+  gap: 180px;
+  flex-wrap:wrap;
+  align-items: center;
+}
+
+   body{
+      font-family: "Arial", "Helvetica";
+      background-image: none;
+   }
+   
+
+   div.pricing{
+      display: flex;
+      flex-direction: row;
+      align-items: end;
+      flex-wrap: nowrap;
+      justify-content: center;
+   }
+
+
+/* In print view, my $20 card is taller than the example image... I have no idea why */
+   div.card{
+      border: 2px solid #45ADDD ;
+      flex-basis: 325px;
+      justify-content: space-around;
+   }
+
+    div.gallery > img{
+      display: none;
+      /* I was going to put a padding here to made 
+      a gap between the cards and the footer 
+      but Jessica told me it was unnecessary
+      and that this is fine. */
+    }
+
+    /* I tried but it's obviously wrong.. */
+    div.card > li{
+      content:'👍';
+    }
+
+    /* bye pictures :( */
+    #gallery{
+      display: none;
+    }
+ }
+ 
